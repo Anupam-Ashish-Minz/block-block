@@ -101,6 +101,16 @@ fn main() {
         let mut d = rl.begin_drawing(&thread);
         d.clear_background(Color::BLACK);
 
+        obsticles = obsticles.iter().map(|o| {
+			let k = Rect {
+				x: o.x,
+				y: o.y + 1,
+				w: o.w,
+				h: o.h,
+			};
+            return k;
+        }).collect();
+
         obsticles.iter().for_each(|o| {
             d.draw_rectangle(o.x, o.y, o.w, o.h, Color::RED);
         });
